@@ -22,13 +22,7 @@ def risovanie():
     display.blit(transform_samolet, model.samolet_slovar["coord"])
 
     for infa_bullet in model.all_bullet:
-        print(1)
-        if model.sosdanie_puli_left == True:
-            print(2)
-            display.blit(transform_pulya, [infa_bullet["coord"][0], infa_bullet["coord"][1]])
-
-        # if model.sosdanie_puli_right == True:
-        #     display.blit(transform_pulya, [model.msscx_right, model.msscy_right])
+        display.blit(transform_pulya, [infa_bullet["coord"][0], infa_bullet["coord"][1]])
 
     pygame.display.flip()
 

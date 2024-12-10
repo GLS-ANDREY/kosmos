@@ -10,11 +10,9 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
-        if a.type == pygame.MOUSEBUTTONDOWN and a.button == pygame.BUTTON_LEFT:
-            bullet_slovar = {"coord": [random.randint(100, 1000), random.randint(100, 800)]}
-            model.all_bullet.append(bullet_slovar)
-            model.strelba_left()
-        # if a.type == pygame.MOUSEBUTTONDOWN and a.button == pygame.BUTTON_RIGHT:
+        if a.type == pygame.MOUSEBUTTONDOWN and (a.button == pygame.BUTTON_RIGHT or a.button == pygame.BUTTON_LEFT):
+            coord_bullet_x = 30 if a.button == pygame.BUTTON_LEFT else 115
+            model.strelba(coord_bullet_x)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
             model.samolet_slovar["coord"][0] += 5
