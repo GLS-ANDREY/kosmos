@@ -1,7 +1,9 @@
 import pygame, random
 
-all_bullet = []
+import bullet
 
+all_bullet = []
+all_stown = []
 samolet_slovar = {"coord": [775, 843]}
 
 
@@ -18,6 +20,12 @@ def granica_ekrana():
     if samolet_slovar["coord"][1] <= 0:
         samolet_slovar["coord"][1] = 0
 
-def strelba(coord_bullet_x):
-    bullet_slovar = {"coord": [samolet_slovar["coord"][0] + coord_bullet_x, samolet_slovar["coord"][1] + 50]}
+
+def strelba(button_r_or_l):
+    coord_bullet_x = 30 if button_r_or_l == "left" else 115
+    bullet_slovar = bullet.made_bullet(samolet_slovar["coord"][0] + coord_bullet_x,samolet_slovar["coord"][1] + 50)
     all_bullet.append(bullet_slovar)
+
+def polet_pul():
+    for infa_bullet in all_bullet:
+        infa_bullet["coord"][1] -= 5
