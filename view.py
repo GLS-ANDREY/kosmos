@@ -1,7 +1,7 @@
 import pygame, model, random
 
 import bullet
-import stown
+import stone
 
 pygame.init()
 
@@ -21,8 +21,8 @@ def risovanie():
 
     display.blit(transform_fon, [0, 0])
     display.blit(transform_samolet, model.samolet_slovar["coord"])
-    for infa_stown in model.all_stown:
-        stown.paint(infa_stown,display)
+    for infa_stone in model.all_stone:
+        stone.paint(infa_stone, display)
 
     for infa_bullet in model.all_bullet:
         bullet.paint(infa_bullet, display)

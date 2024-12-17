@@ -1,17 +1,17 @@
 import pygame, model, random, bullet
 
-import stown
+import stone
 
 pygame.key.set_repeat(10)
 
 dvizhenie_puli = pygame.event.custom_type()
 pygame.time.set_timer(dvizhenie_puli, 10)
 
-dvizhenie_stown = pygame.event.custom_type()
-pygame.time.set_timer(dvizhenie_stown, 10)
+dvizhenie_stone = pygame.event.custom_type()
+pygame.time.set_timer(dvizhenie_stone, 10)
 
-spawn_stown = pygame.event.custom_type()
-pygame.time.set_timer(spawn_stown,3000)
+spawn_stone = pygame.event.custom_type()
+pygame.time.set_timer(spawn_stone, 3000)
 
 
 def allsobitiya():
@@ -21,17 +21,17 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
-        if a.type == spawn_stown:
-            stown_slovar = stown.made_stown(random.randint(700, 900), -70)
-            model.all_stown.append(stown_slovar)
+        if a.type == spawn_stone:
+            stone_slovar = stone.made_stone(random.randint(700, 900), 70)
+            model.all_stone.append(stone_slovar)
 
         if a.type == dvizhenie_puli:
             for infa_bullet in model.all_bullet:
                 bullet.polet_pul(infa_bullet)
 
-        if a.type == dvizhenie_stown:
-            for infa_stown in model.all_stown:
-                stown.polet_stown(infa_stown)
+        if a.type == dvizhenie_stone:
+            for infa_stone in model.all_stone:
+                stone.polet_stone(infa_stone)
 
         if a.type == pygame.MOUSEBUTTONDOWN and (a.button == pygame.BUTTON_RIGHT or a.button == pygame.BUTTON_LEFT):
             if a.button == pygame.BUTTON_RIGHT:

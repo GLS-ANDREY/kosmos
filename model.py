@@ -3,7 +3,7 @@ import pygame, random
 import bullet
 
 all_bullet = []
-all_stown = []
+all_stone = []
 samolet_slovar = {"coord": [775, 843]}
 
 
