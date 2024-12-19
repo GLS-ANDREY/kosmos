@@ -1,6 +1,4 @@
-import pygame, model, random, bullet
-
-import stone
+import pygame, model, random, bullet,stone
 
 pygame.key.set_repeat(10)
 

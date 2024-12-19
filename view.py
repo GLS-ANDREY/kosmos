@@ -1,7 +1,4 @@
-import pygame, model, random
-
-import bullet
-import stone
+import pygame, model, random,stone,bullet
 
 pygame.init()
 

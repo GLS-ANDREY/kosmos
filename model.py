@@ -1,6 +1,5 @@
-import pygame, random
+import pygame, random,bullet
 
-import bullet
 
 all_bullet = []
 all_stone = []
