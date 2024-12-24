@@ -39,17 +39,17 @@ def allsobitiya():
             model.strelba(button)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
-            model.samolet_slovar["coord"][0] += 15
+            model.samolet_slovar["coord"][0] += 25
             model.granica_ekrana()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_a:
-            model.samolet_slovar["coord"][0] -= 15
+            model.samolet_slovar["coord"][0] -= 25
             model.granica_ekrana()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_s:
-            model.samolet_slovar["coord"][1] += 15
+            model.samolet_slovar["coord"][1] += 25
             model.granica_ekrana()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_w:
-            model.samolet_slovar["coord"][1] -= 15
+            model.samolet_slovar["coord"][1] -= 25
             model.granica_ekrana()
