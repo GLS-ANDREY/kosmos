@@ -18,11 +18,11 @@ def made_stone(x_stone, y_stone):
 
 def polet_stone(stone):
     size_stone_static = transform_stone.get_size()
-    stone["coord"][0] += stone["speed_x"]/3
-    stone["coord"][1] += stone["speed_y"]/3
+    stone["coord"][0] += stone["speed_x"]/3.5
+    stone["coord"][1] += stone["speed_y"]/2.5
     stone["center"] = [stone["coord"][0] + size_stone_static[0] / 2, stone["coord"][1] + size_stone_static[1] / 2]
     stone["spin"] = pygame.transform.rotate(transform_stone, stone["angle"])
-    stone["angle"] += 1
+    stone["angle"] += 2.5
 
     size_stone = stone["spin"].get_size()
     center_spin_stone = [stone["coord"][0] + size_stone[0] / 2, stone["coord"][1] + size_stone[1] / 2]
