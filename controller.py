@@ -11,7 +11,6 @@ pygame.time.set_timer(dvizhenie_stone, 10)
 spawn_stone = pygame.event.custom_type()
 pygame.time.set_timer(spawn_stone, 3000)
 
-
 def allsobitiya():
     s = pygame.event.get()
 
