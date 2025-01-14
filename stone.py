@@ -3,7 +3,7 @@ import random, pygame
 
 def made_stone(x_stone, y_stone):
     #TODO: Сделать удаление камня
-    stone_slovar = {"coord": [x_stone, y_stone], "speed_x": random.randint(-3, 3), "speed_y": random.randint(2, 3),
+    stone_slovar = {"coord": pygame.Rect(x_stone,y_stone]), "speed_x": random.randint(-3, 3), "speed_y": random.randint(2, 3),
                     "angle": random.randint(0, 360),"coord_draw": [x_stone,y_stone]}
 
     stone_slovar["spin"] = pygame.transform.rotate(transform_stone, stone_slovar["angle"])
@@ -17,6 +17,7 @@ def made_stone(x_stone, y_stone):
 
 
 def polet_stone(stone):
+
     size_stone_static = transform_stone.get_size()
     stone["coord"][0] += stone["speed_x"]/3.5
     stone["coord"][1] += stone["speed_y"]/2.5
