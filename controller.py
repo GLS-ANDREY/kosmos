@@ -24,7 +24,7 @@ def allsobitiya():
 
         if a.type == dvizhenie_puli:
             for infa_bullet in model.all_bullet:
-                bullet.polet_pul(infa_bullet)
+                bullet.polet_pul(infa_bullet,model.all_stone)
 
         if a.type == dvizhenie_stone:
             for infa_stone in model.all_stone:
