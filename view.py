@@ -20,7 +20,6 @@ def risovanie():
     display.blit(transform_samolet, model.samolet_slovar["coord"])
     for infa_stone in model.all_stone:
         stone.paint(infa_stone, display)
-    print(len(model.all_stone),len(model.all_bullet))
 
     for infa_bullet in model.all_bullet:
         bullet.paint(infa_bullet, display)
