@@ -1,4 +1,4 @@
-import pygame, view, model, controller, time
+import pygame, view, model, controller, time,sounds
 
 while True:
     view.risovanie()

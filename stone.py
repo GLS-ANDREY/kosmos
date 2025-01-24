@@ -25,7 +25,6 @@ def polet_stone(stone):
     stone["coord"].x = stone["coord_float"][0]
     stone["coord"].y = stone["coord_float"][1]
 
-
     stone["center"] = [stone["coord"].x + size_stone_static[0] / 2, stone["coord"].y + size_stone_static[1] / 2]
     stone["spin"] = pygame.transform.rotate(transform_stone, stone["angle"])
     stone["angle"] += 2.5
@@ -44,9 +43,9 @@ def paint(stone, display: pygame.Surface):
     size_stone = stone["spin"].get_size()
 
     # pygame.draw.circle(display, [255, 0, 0],
-    #                    [stone["coord_draw"][0] + size_stone[0] / 2, stone["coord_draw"][1] + size_stone[1] / 2], 3)
+    #                    [stone["coord_draw"][0] + size_stone[0] / 2, stone["coord_draw"][1] + size_stone[1] / 2], 3)###ЦЕНТР РЕКТА КАМНЯ###
     # pygame.draw.rect(display, [255, 255, 255],
-    #                  [stone["coord_draw"][0], stone["coord_draw"][1], size_stone[0], size_stone[1]], 3)
+    #                  [stone["coord_draw"][0], stone["coord_draw"][1], size_stone[0], size_stone[1]], 3) ###РЕКТ КАМНЯ###
 
 
 stone = pygame.image.load("pics/Meteorit.png")
