@@ -1,7 +1,6 @@
 import pygame, random,bullet,messenger
 
 def sbivanie_stone(text, otpravitel, dop_infa):
-    print(1)
     all_bullet.remove(otpravitel)
 
 def granica_ekrana():

@@ -1,7 +1,11 @@
 import pygame, messenger
-stone_break_sound = pygame.mixer.Sound("sounds/shot against a concrete barrier.mp3")
+pygame.init()
 
-#TODO: Сделать кнопку для отключения звуков
+sound_off_on = 0.2
+
+stone_break_sound = pygame.mixer.Sound("sounds/player is shot or the base (eagle) is blown up.mp3")
+stone_break_sound.set_volume(0.2)
+
 def sound(text,otpravitel,dop_infa):
     stone_break_sound.play()
 
