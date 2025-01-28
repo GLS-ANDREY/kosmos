@@ -22,7 +22,7 @@ def risovanie():
     display.blit(transform_fon, [0, 0])
     display.blit(transform_samolet, model.samolet_slovar["coord"])
     if sounds.sound_off_on == 0:
-        display.blit(transform_sound_off,[1630,0])
+        display.blit(transform_sound_off,[0,0])
     for infa_stone in model.all_stone:
         stone.paint(infa_stone, display)
 
