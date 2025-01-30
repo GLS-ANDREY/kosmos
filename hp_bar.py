@@ -1,23 +1,23 @@
-import pygame, messenger,image_helpers
+import pygame, messenger,image_helpers,random
 
-rect_hp_bar = pygame.Rect(0,0,300,100)
+rect_red_hp_bar = pygame.Rect(86,15,0,46)
 
 def paint(display:pygame.Surface):
     display.blit(transform_hp_bar_surface,[0,0])
-    delitel_red_hp_width = 2
-    transform_hp_red_surface = pygame.transform.scale(red_hp_bar, [red_hp_bar.get_width()/delitel_red_hp_width, red_hp_bar.get_height()])
+
+    transform_hp_red_surface = pygame.transform.scale(red_hp_bar, [rect_red_hp_bar.width, rect_red_hp_bar.height])
     display.blit(transform_hp_red_surface,[86,15])
 
-
-
+#TODO: Сделать что бы красное заходило с лево, а не с право, сделать уменьшение хп когда камень достигает пола (уменьшение хп на 20)
 def hp(text,otpravitel,dop_infa):
-    pass
+    int_hp = random.randint(1, 100)
+    ustanovi_hp(int_hp)
 
 
 def ustanovi_hp(int_hp):
-    300/50=6
-    6/2=3
-    3*50=150
+    rect_red_hp_bar.width = red_hp_bar.get_width()
+    new_hp = (100-int_hp)*rect_red_hp_bar.width/100
+    rect_red_hp_bar.width = new_hp
 
 
 

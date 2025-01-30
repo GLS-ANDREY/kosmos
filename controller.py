@@ -21,10 +21,6 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
-        if a.type == pygame.KEYUP and a.key == pygame.K_SPACE:
-            int_hp = random.randint(1,100)
-            hp_bar.ustanovi_hp(int_hp)
-
         if a.type == spawn_stone:
             stone_slovar = stone.made_stone(random.randint(600, 900), -50)
             model.all_stone.append(stone_slovar)
