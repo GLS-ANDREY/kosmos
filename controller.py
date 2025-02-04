@@ -22,8 +22,7 @@ def allsobitiya():
             exit()
 
         if a.type == pygame.KEYUP and a.key == pygame.K_y:
-            hp_bar.int_hp += 20
-            hp_bar.ustanovi_hp()
+            hp_bar.heal_hp()
 
         if a.type == spawn_stone:
             stone_slovar = stone.made_stone(random.randint(600, 900), -50)
