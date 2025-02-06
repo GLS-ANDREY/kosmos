@@ -1,5 +1,7 @@
 import pygame, messenger,image_helpers,random
 
+creative_mode = False
+
 rect_red_hp_bar = pygame.Rect(86,15,0,46)
 
 def paint(display:pygame.Surface):
@@ -18,9 +20,10 @@ def heal_hp():
 
 def hp(text,otpravitel,dop_infa):
     global int_hp
-    int_hp = int_hp-20
-    ustanovi_hp()
-
+    if text == "Камень вылетел за экран": #and creative_mode == False:
+        int_hp = int_hp-20
+        ustanovi_hp()
+#TODO: Вячеславу нужно победить золотой цвет
 def ustanovi_hp():
     global int_hp
     rect_red_hp_bar.width = red_hp_bar.get_width()
@@ -38,6 +41,8 @@ def ustanovi_hp():
 int_hp = 100
 
 red_hp_bar = pygame.image.load("pics/red_hp.png")
+import image_helpers
+red_hp_bar = image_helpers.to_grayscale(red_hp_bar)
 hp_bar_surface = pygame.image.load("pics/hp_bar.png")
 transform_hp_bar_surface = pygame.transform.scale(hp_bar_surface, [hp_bar_surface.get_width()/3, hp_bar_surface.get_height()/3])
 

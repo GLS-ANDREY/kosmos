@@ -1,4 +1,9 @@
-import random, pygame, time
+import random, pygame, time, messenger
+
+
+def stone_viletel_za_ekran(stone):
+    if stone["coord"].y > 1010 or stone["coord"].x > 1710 or stone["coord"].x < -10:
+        messenger.send_message("Камень вылетел за экран", stone)
 
 
 def made_stone(x_stone, y_stone):
@@ -22,6 +27,7 @@ def polet_stone(stone):
     size_stone_static = transform_stone.get_size()
     stone["coord_float"][0] += stone["speed_x"] / 3.5
     stone["coord_float"][1] += stone["speed_y"] / 2.5
+    stone_viletel_za_ekran(stone)
     stone["coord"].x = stone["coord_float"][0]
     stone["coord"].y = stone["coord_float"][1]
 

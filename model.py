@@ -8,6 +8,10 @@ def bullet_za_granicey(text, otpravitel, dop_infa):
     if text == "Пуля вышла за экран":
         all_bullet.remove(otpravitel)
 
+def stone_za_granicey(text, otpravitel, dop_infa):
+    if text == "Камень вылетел за экран":
+        all_stone.remove(otpravitel)
+
 def granica_ekrana():
     if samolet_slovar["coord"][0] <= 0:
         samolet_slovar["coord"][0] = 0
@@ -29,6 +33,8 @@ def strelba(button_r_or_l):
 
 messenger.add_me_to_chat(sbivanie_stone)
 messenger.add_me_to_chat(bullet_za_granicey)
+messenger.add_me_to_chat(stone_za_granicey)
+
 all_bullet = []
 all_stone = []
 samolet_slovar = {"coord": [775, 843]}

@@ -10,17 +10,20 @@ def paint(bullet, display: pygame.Surface,stone=None):
 def del_stone(bullet, stone_list):
     for collide_stone in stone_list:
         collide_t_or_f = bullet["coord"].colliderect(collide_stone["coord"])
-        if collide_t_or_f == True:
+        if collide_t_or_f == True:# and bullet["coord"].y >= -5:
             stone_list.remove(collide_stone)
             messenger.send_message("Пуля сбила камень",bullet)
-#TODO: Сейчас при вылетании пули за экран, она удаляется и создается впечатление что мы сбили камень, нужно что бы она просто исчезала
+            return True
+
+
 def polet_pul(bullet, stone_list):
     bullet["coord"].y -= 5
-    del_stone(bullet, stone_list)
-    del_bullet(bullet)
+    e = del_stone(bullet,stone_list)
+    if e == None:
+        del_bullet(bullet)
 
 def del_bullet(bullet):
-    if bullet["coord"].y <= -15:
+    if bullet["coord"].y <= -25:
         messenger.send_message("Пуля вышла за экран", bullet)
 
 
