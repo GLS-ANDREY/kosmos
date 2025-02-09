@@ -2,7 +2,7 @@ import random, pygame, time, messenger
 
 
 def stone_viletel_za_ekran(stone):
-    if stone["coord"].y > 1010 or stone["coord"].x > 1710 or stone["coord"].x < -10:
+    if stone["coord"].y > 1010 or stone["coord"].x > 1710 or stone["coord"].x < -50:
         messenger.send_message("Камень вылетел за экран", stone)
 
 

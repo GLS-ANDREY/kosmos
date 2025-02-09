@@ -1,4 +1,4 @@
-import pygame, model, random, stone, bullet,hp_bar,sounds
+import pygame, model, random, stone, bullet,hp_bar,sounds,points
 
 
 pygame.init()
@@ -28,6 +28,9 @@ def risovanie():
 
     for infa_bullet in model.all_bullet:
         bullet.paint(infa_bullet, display)
+
+
+    points.paint(display)
 
     hp_bar.paint(display)
 

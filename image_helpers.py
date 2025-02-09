@@ -1,4 +1,21 @@
 import pygame
+def to_gold_tone(surface):
+    width, height = surface.get_size()
+    gold_surface = pygame.Surface((width, height), pygame.SRCALPHA)
+
+    for y in range(height):
+        for x in range(width):
+            r, g, b, a = surface.get_at((x, y))
+            gray = int(0.299 * r + 0.587 * g + 0.114 * b)  # Перевод в оттенки серого
+
+            # Градиент золотого цвета
+            gold_r = min(255, int(gray * 1.7)*3)   # Усиливаем красный компонент
+            gold_g = min(255, int(gray * 1.3)*3)   # Усиливаем зеленый
+            gold_b = min(255, int(gray * 0.0)*3)   # Ослабляем синий (делает цвет теплым)
+
+            gold_surface.set_at((x, y), (gold_r, gold_g, gold_b, a))  # Устанавливаем пиксель
+
+    return gold_surface
 
 def to_grayscale(surface):
     width, height = surface.get_size()

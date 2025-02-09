@@ -24,8 +24,8 @@ def allsobitiya():
         if a.type == pygame.KEYUP and a.key == pygame.K_y:
             hp_bar.heal_hp()
 
-        if a.type == pygame.KEYUP and (a.key == pygame.K_g or a.key == pygame.K_g):
-            hp_bar.creative_mode = True
+        if a.type == pygame.KEYUP and (a.key == pygame.K_g or a.key == pygame.K_c):
+            hp_bar.creative_mode_on()
 
         if a.type == spawn_stone:
             stone_slovar = stone.made_stone(random.randint(600, 900), -50)
