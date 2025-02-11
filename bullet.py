@@ -1,5 +1,8 @@
 import pygame,messenger
 
+import points
+
+
 def made_bullet(x_bullet, y_bullet):
     return {"coord": pygame.Rect(x_bullet, y_bullet, 6, 21)}
 

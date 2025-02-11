@@ -1,8 +1,12 @@
 import pygame, random,bullet,messenger
 
+import points
+
+
 def sbivanie_stone(text, otpravitel, dop_infa):
     if text == "Пуля сбила камень":
         all_bullet.remove(otpravitel)
+        points.plus_point()
 
 def bullet_za_granicey(text, otpravitel, dop_infa):
     if text == "Пуля вышла за экран":
@@ -11,6 +15,7 @@ def bullet_za_granicey(text, otpravitel, dop_infa):
 def stone_za_granicey(text, otpravitel, dop_infa):
     if text == "Камень вылетел за экран":
         all_stone.remove(otpravitel)
+
 
 def granica_ekrana():
     if samolet_slovar["coord"][0] <= 0:

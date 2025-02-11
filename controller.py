@@ -1,7 +1,8 @@
-import pygame, model, random, bullet,stone
+import pygame, model, random, bullet, stone
 
 import hp_bar
 import sounds
+import points
 
 pygame.key.set_repeat(10)
 
@@ -14,6 +15,7 @@ pygame.time.set_timer(dvizhenie_stone, 10)
 spawn_stone = pygame.event.custom_type()
 pygame.time.set_timer(spawn_stone, 3000)
 
+
 def allsobitiya():
     s = pygame.event.get()
 
@@ -21,8 +23,11 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
+
+
         if a.type == pygame.KEYUP and a.key == pygame.K_y:
             hp_bar.heal_hp()
+            points.point_to_zero()
 
         if a.type == pygame.KEYUP and (a.key == pygame.K_g or a.key == pygame.K_c):
             hp_bar.creative_mode_on()
@@ -33,7 +38,7 @@ def allsobitiya():
 
         if a.type == dvizhenie_puli:
             for infa_bullet in model.all_bullet:
-                bullet.polet_pul(infa_bullet,model.all_stone)
+                bullet.polet_pul(infa_bullet, model.all_stone)
 
         if a.type == dvizhenie_stone:
             for infa_stone in model.all_stone:
