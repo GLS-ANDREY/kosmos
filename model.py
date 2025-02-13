@@ -1,6 +1,6 @@
-import pygame, random,bullet,messenger
+import pygame, random,bullet,messenger,points
 
-import points
+import gift_hp
 
 
 def sbivanie_stone(text, otpravitel, dop_infa):
@@ -40,6 +40,11 @@ messenger.add_me_to_chat(sbivanie_stone)
 messenger.add_me_to_chat(bullet_za_granicey)
 messenger.add_me_to_chat(stone_za_granicey)
 
+all_gifts = []
 all_bullet = []
 all_stone = []
+gift_slovar = gift_hp.made_gift()
+all_gifts.append(gift_slovar)
+gift_slovar = gift_hp.made_gift()
+all_gifts.append(gift_slovar)
 samolet_slovar = {"coord": [775, 843]}

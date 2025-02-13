@@ -23,8 +23,6 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
-
-
         if a.type == pygame.KEYUP and a.key == pygame.K_y:
             hp_bar.heal_hp()
             points.point_to_zero()
@@ -47,6 +45,7 @@ def allsobitiya():
         if a.type == pygame.KEYUP and a.key == pygame.K_m:
             sounds.sound_off_on = 0.2 if sounds.sound_off_on == 0 else 0
             sounds.stone_break_sound.set_volume(sounds.sound_off_on)
+            sounds.stone_bye_sound.set_volume(sounds.sound_off_on)
 
         if a.type == pygame.MOUSEBUTTONDOWN and (a.button == pygame.BUTTON_RIGHT or a.button == pygame.BUTTON_LEFT):
             if a.button == pygame.BUTTON_RIGHT:

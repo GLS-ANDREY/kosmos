@@ -29,7 +29,6 @@ def hp(text,otpravitel,dop_infa):
         ustanovi_hp()
 
 
-#TODO: Вячеславу нужно победить золотой цвет
 def ustanovi_hp():
     global int_hp
 

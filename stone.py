@@ -46,8 +46,8 @@ def polet_stone(stone):
 
 def paint(stone, display: pygame.Surface):
     display.blit(stone["spin"], stone["coord_draw"])
-    size_stone = stone["spin"].get_size()
 
+    size_stone = stone["spin"].get_size()
     # pygame.draw.circle(display, [255, 0, 0],
     #                    [stone["coord_draw"][0] + size_stone[0] / 2, stone["coord_draw"][1] + size_stone[1] / 2], 3)###ЦЕНТР РЕКТА КАМНЯ###
     # pygame.draw.rect(display, [255, 255, 255],

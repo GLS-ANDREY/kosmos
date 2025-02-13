@@ -1,5 +1,6 @@
 import pygame, model, random, stone, bullet,hp_bar,sounds,points
 
+import gift_hp
 
 pygame.init()
 
@@ -28,6 +29,9 @@ def risovanie():
 
     for infa_bullet in model.all_bullet:
         bullet.paint(infa_bullet, display)
+
+    for infa_gift in model.all_gifts:
+        gift_hp.paint(infa_gift,display)
 
 
     points.paint(display)
