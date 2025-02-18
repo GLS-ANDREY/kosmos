@@ -6,9 +6,11 @@ import points
 def made_bullet(x_bullet, y_bullet):
     return {"coord": pygame.Rect(x_bullet, y_bullet, 6, 21)}
 
+
 def paint(bullet, display: pygame.Surface,stone=None):
     display.blit(transform_bullet, bullet["coord"])
     # pygame.draw.rect(display, [255,255,255],[bullet["coord"][0],bullet["coord"][1],6,21],1) ###РЕКТ ПУЛИ###
+
 
 def del_stone(bullet, stone_list):
     for collide_stone in stone_list:
@@ -24,6 +26,7 @@ def polet_pul(bullet, stone_list):
     e = del_stone(bullet,stone_list)
     if e == None:
         del_bullet(bullet)
+
 
 def del_bullet(bullet):
     if bullet["coord"].y <= -25:

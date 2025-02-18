@@ -1,16 +1,24 @@
 import pygame, model, random, bullet, stone
 
+import gift_hp
 import hp_bar
+import samolet
 import sounds
 import points
 
 pygame.key.set_repeat(10)
 
-dvizhenie_puli = pygame.event.custom_type()
-pygame.time.set_timer(dvizhenie_puli, 10)
+# dvizhenie_puli = pygame.event.custom_type()
+# pygame.time.set_timer(dvizhenie_puli, 10)
+#
+# dvizhenie_gift = pygame.event.custom_type()
+# pygame.time.set_timer(dvizhenie_gift, 10)
+#
+# dvizhenie_stone = pygame.event.custom_type()
+# pygame.time.set_timer(dvizhenie_stone, 10)
 
-dvizhenie_stone = pygame.event.custom_type()
-pygame.time.set_timer(dvizhenie_stone, 10)
+dvizhenie_puli_stone_gift = pygame.event.custom_type()
+pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
 
 spawn_stone = pygame.event.custom_type()
 pygame.time.set_timer(spawn_stone, 3000)
@@ -23,9 +31,12 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
+        if a.type == dvizhenie_puli_stone_gift:
+            for infa_gift in model.all_gifts:
+                gift_hp.polet_gifta(infa_gift)
+
         if a.type == pygame.KEYUP and a.key == pygame.K_y:
             hp_bar.heal_hp()
-            points.point_to_zero()
 
         if a.type == pygame.KEYUP and (a.key == pygame.K_g or a.key == pygame.K_c):
             hp_bar.creative_mode_on()
@@ -34,11 +45,11 @@ def allsobitiya():
             stone_slovar = stone.made_stone(random.randint(600, 900), -50)
             model.all_stone.append(stone_slovar)
 
-        if a.type == dvizhenie_puli:
+        if a.type == dvizhenie_puli_stone_gift:
             for infa_bullet in model.all_bullet:
                 bullet.polet_pul(infa_bullet, model.all_stone)
 
-        if a.type == dvizhenie_stone:
+        if a.type == dvizhenie_puli_stone_gift:
             for infa_stone in model.all_stone:
                 stone.polet_stone(infa_stone)
 
@@ -52,20 +63,18 @@ def allsobitiya():
                 button = "right"
             else:
                 button = "left"
-            model.strelba(button)
+            bs = samolet.strelba(button)
+            model.all_bullet.append(bs)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
-            model.samolet_slovar["coord"][0] += 25
-            model.granica_ekrana()
+            samolet.dvizhenie_vpravo()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_a:
-            model.samolet_slovar["coord"][0] -= 25
-            model.granica_ekrana()
+            samolet.dvizhenie_vlevo()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_s:
-            model.samolet_slovar["coord"][1] += 25
-            model.granica_ekrana()
+            samolet.dvizhenie_vniz()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_w:
-            model.samolet_slovar["coord"][1] -= 25
-            model.granica_ekrana()
+            samolet.dvizhenie_vverx()
+
