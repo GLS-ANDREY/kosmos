@@ -13,31 +13,29 @@ def paint(display: pygame.Surface):
 
 
 def dvizhenie_vpravo():
-    samolet_slovar["coord"][0] += 25
-    for all_rect in samolet_slovar["hit_rect"]:
-        all_rect[0] += 25
-    _granica_ekrana()
+    _dvizhenie(0,25)
 
 
 def dvizhenie_vlevo():
-    samolet_slovar["coord"][0] -= 25
-    for all_rect in samolet_slovar["hit_rect"]:
-        all_rect[0] -= 25
-    _granica_ekrana()
+    _dvizhenie(0,-25)
 
 
 def dvizhenie_vniz():
-    samolet_slovar["coord"][1] += 25
-    for all_rect in samolet_slovar["hit_rect"]:
-        all_rect[1] += 25
-    _granica_ekrana()
+    _dvizhenie(1,25)
 
 
 def dvizhenie_vverx():
-    samolet_slovar["coord"][1] -= 25
-    for all_rect in samolet_slovar["hit_rect"]:
-        all_rect[1] -= 25
+    _dvizhenie(1,-25)
+
+def _dvizhenie(coordinata, chislo):
+    sscc_do = samolet_slovar["coord"][coordinata]
+    samolet_slovar["coord"][coordinata] += chislo
     _granica_ekrana()
+    sscc_posle = samolet_slovar["coord"][coordinata]
+    sscc_pd = sscc_posle-sscc_do
+    for all_rect in samolet_slovar["hit_rect"]:
+        all_rect[coordinata] += sscc_pd
+
 
 
 def strelba(button_r_or_l=None):
@@ -46,8 +44,7 @@ def strelba(button_r_or_l=None):
     return bullet_slovar
 
 
-# TODO:Оживить честы, заменить картинку на парашют, если камень попадает по самолету -хп, cделать режим отладки по кнопке, сделать деф в котором будут парамерты координата([0]/[1])
-# TODO: и знак([-1]/[1]), деф будет использоваться для движения
+# TODO:Приедлать к честу парашют, если камень попадает по самолету -хп, cделать режим отладки по кнопке
 
 def _granica_ekrana():
     if samolet_slovar["coord"][0] <= 0:
