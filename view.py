@@ -36,6 +36,6 @@ def risovanie():
 
     hp_bar.paint(display)
 
-    samolet.paint(display)
+    samolet.paint(display,model.otladka)
 
     pygame.display.flip()

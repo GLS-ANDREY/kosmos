@@ -6,10 +6,12 @@ samolet_slovar = {"coord": pygame.Rect([775, 843, 149, 147]),
                   "hit_rect": [pygame.Rect(820, 843, 60, 147), pygame.Rect(775, 925, 149, 65)]}
 
 
-def paint(display: pygame.Surface):
+def paint(display: pygame.Surface, otladka=False):
     display.blit(transform_samolet, samolet_slovar["coord"])
-    for all_rect in samolet_slovar["hit_rect"]:
-        pygame.draw.rect(display, [255, 100, 255], all_rect, 2)
+
+    if otladka:
+        for all_rect in samolet_slovar["hit_rect"]:
+            pygame.draw.rect(display, [255, 100, 255], all_rect, 2)
 
 
 def dvizhenie_vpravo():
@@ -37,14 +39,13 @@ def _dvizhenie(coordinata, chislo):
         all_rect[coordinata] += sscc_pd
 
 
-
 def strelba(button_r_or_l=None):
     coord_bullet_x = 30 if button_r_or_l == "left" else 115
     bullet_slovar = bullet.made_bullet(samolet_slovar["coord"][0] + coord_bullet_x, samolet_slovar["coord"][1] + 50)
     return bullet_slovar
 
 
-# TODO:Приедлать к честу парашют, если камень попадает по самолету -хп, cделать режим отладки по кнопке
+# TODO: если камень попадает по самолету -хп, cделать режим отладки по кнопке, сделать анимацию
 
 def _granica_ekrana():
     if samolet_slovar["coord"][0] <= 0:

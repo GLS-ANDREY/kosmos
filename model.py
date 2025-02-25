@@ -30,6 +30,4 @@ messenger.add_me_to_chat(sbor_gift)
 all_gifts = []
 all_bullet = []
 all_stone = []
-
-gift_slovar = gift_hp.made_gift()
-all_gifts.append(gift_slovar)
+otladka = False

@@ -23,6 +23,9 @@ pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
 spawn_stone = pygame.event.custom_type()
 pygame.time.set_timer(spawn_stone, 3000)
 
+spawn_gift = pygame.event.custom_type()
+pygame.time.set_timer(spawn_gift, 10000)
+
 
 def allsobitiya():
     s = pygame.event.get()
@@ -30,6 +33,14 @@ def allsobitiya():
     for a in s:
         if a.type == pygame.QUIT:
             exit()
+
+        if a.type == spawn_gift:
+            gift = gift_hp.made_gift()
+            model.all_gifts.append(gift)
+
+        if a.type == pygame.KEYUP and a.key == pygame.K_t:
+            model.otladka = True
+
 
         if a.type == dvizhenie_puli_stone_gift:
             for infa_gift in model.all_gifts:
