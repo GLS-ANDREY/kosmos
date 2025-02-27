@@ -17,15 +17,22 @@ def stone_za_granicey(text, otpravitel, dop_infa):
         all_stone.remove(otpravitel)
 
 
-def sbor_gift(text, otpravitel, dopz_infa):
+def sbor_gift(text, otpravitel, dop_infa):
     if text == "Самолет собрал подарок":
         all_gifts.remove(otpravitel)
+
+def stone_popal_v_samolet(text, otpravitel, dop_infa):
+    if text == "Камень попал по самолету":
+        all_stone.remove(otpravitel)
+
 
 
 messenger.add_me_to_chat(sbivanie_stone)
 messenger.add_me_to_chat(bullet_za_granicey)
 messenger.add_me_to_chat(stone_za_granicey)
 messenger.add_me_to_chat(sbor_gift)
+messenger.add_me_to_chat(stone_popal_v_samolet)
+
 
 all_gifts = []
 all_bullet = []

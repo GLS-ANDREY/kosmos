@@ -5,6 +5,11 @@ def stone_viletel_za_ekran(stone):
     if stone["coord"].y > 1010 or stone["coord"].x > 1710 or stone["coord"].x < -50:
         messenger.send_message("Камень вылетел за экран", stone)
 
+def stone_popal_po_samoletu(stone, samolet):
+    if stone["coord"].collidelist(samolet["hit_rect"]) != -1:
+        messenger.send_message("Камень попал по самолету", stone)
+
+
 
 def made_stone(x_stone, y_stone):
     stone_slovar = {"coord": pygame.Rect(x_stone, y_stone, 50, 50), "speed_x": random.randint(-3, 3),
@@ -23,10 +28,11 @@ def made_stone(x_stone, y_stone):
     return stone_slovar
 
 
-def polet_stone(stone):
+def polet_stone(stone, samolet):
     size_stone_static = transform_stone.get_size()
     stone["coord_float"][0] += stone["speed_x"] / 3.5
     stone["coord_float"][1] += stone["speed_y"] / 2.5
+    stone_popal_po_samoletu(stone,samolet)
     stone_viletel_za_ekran(stone)
     stone["coord"].x = stone["coord_float"][0]
     stone["coord"].y = stone["coord_float"][1]
@@ -44,14 +50,16 @@ def polet_stone(stone):
     stone["coord_draw"][1] = stone["coord"].y - center_spin_stone[1]
 
 
-def paint(stone, display: pygame.Surface):
+def paint(stone, display: pygame.Surface,otladka):
     display.blit(stone["spin"], stone["coord_draw"])
 
     size_stone = stone["spin"].get_size()
-    # pygame.draw.circle(display, [255, 0, 0],
-    #                    [stone["coord_draw"][0] + size_stone[0] / 2, stone["coord_draw"][1] + size_stone[1] / 2], 3)###ЦЕНТР РЕКТА КАМНЯ###
-    # pygame.draw.rect(display, [255, 255, 255],
-    #                  [stone["coord_draw"][0], stone["coord_draw"][1], size_stone[0], size_stone[1]], 3) ###РЕКТ КАМНЯ###
+
+    if otladka:
+        pygame.draw.circle(display, [255, 0, 0],
+                           [stone["coord_draw"][0] + size_stone[0] / 2, stone["coord_draw"][1] + size_stone[1] / 2], 3)
+        pygame.draw.rect(display, [255, 255, 255],
+                         [stone["coord_draw"][0], stone["coord_draw"][1], size_stone[0], size_stone[1]], 3)
 
 
 stone = pygame.image.load("pics/Meteorit.png")

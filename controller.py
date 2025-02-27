@@ -38,9 +38,8 @@ def allsobitiya():
             gift = gift_hp.made_gift()
             model.all_gifts.append(gift)
 
-        if a.type == pygame.KEYUP and a.key == pygame.K_t:
-            model.otladka = True
-
+        if a.type == pygame.KEYUP and a.key == pygame.K_TAB:
+            model.otladka = not model.otladka
 
         if a.type == dvizhenie_puli_stone_gift:
             for infa_gift in model.all_gifts:
@@ -62,7 +61,7 @@ def allsobitiya():
 
         if a.type == dvizhenie_puli_stone_gift:
             for infa_stone in model.all_stone:
-                stone.polet_stone(infa_stone)
+                stone.polet_stone(infa_stone, samolet.samolet_slovar)
 
         if a.type == pygame.KEYUP and a.key == pygame.K_m:
             sounds.sound_off_on = 0.2 if sounds.sound_off_on == 0 else 0

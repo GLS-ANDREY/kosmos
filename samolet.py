@@ -1,17 +1,14 @@
 import pygame, random, bullet, messenger, points, model
 
-samolet = pygame.image.load("pics/samolet.png")
-transform_samolet = pygame.transform.scale(samolet, [149, 147])
-samolet_slovar = {"coord": pygame.Rect([775, 843, 149, 147]),
-                  "hit_rect": [pygame.Rect(820, 843, 60, 147), pygame.Rect(775, 925, 149, 65)]}
-
-
-def paint(display: pygame.Surface, otladka=False):
+def paint(display: pygame.Surface, otladka):
     display.blit(transform_samolet, samolet_slovar["coord"])
 
     if otladka:
         for all_rect in samolet_slovar["hit_rect"]:
             pygame.draw.rect(display, [255, 100, 255], all_rect, 2)
+
+def animation(display: pygame.Surface):
+    pass
 
 
 def dvizhenie_vpravo():
@@ -45,8 +42,6 @@ def strelba(button_r_or_l=None):
     return bullet_slovar
 
 
-# TODO: если камень попадает по самолету -хп, cделать режим отладки по кнопке, сделать анимацию
-
 def _granica_ekrana():
     if samolet_slovar["coord"][0] <= 0:
         samolet_slovar["coord"][0] = 0
@@ -59,3 +54,11 @@ def _granica_ekrana():
 
     if samolet_slovar["coord"][1] <= 0:
         samolet_slovar["coord"][1] = 0
+
+# small_boom = pygame.image.load("pics/small_boom.png")
+# middle_boom = pygame.image.load("pics/middle_boom.png")
+# big_boom = pygame.image.load("pics/big_boom.png")
+samolet = pygame.image.load("pics/samolet.png")
+transform_samolet = pygame.transform.scale(samolet, [149, 147])
+samolet_slovar = {"coord": pygame.Rect([775, 843, 149, 147]),
+                  "hit_rect": [pygame.Rect(820, 843, 60, 147), pygame.Rect(775, 925, 149, 65)]}

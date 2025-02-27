@@ -27,11 +27,21 @@ def creative_mode_on():
 
 def _hp(text, otpravitel, dop_infa):
     global int_hp
-    if text == "Камень вылетел за экран" and creative_mode == False:
-        int_hp -= 20
-        _ustanovi_hp()
-    if text == "Самолет собрал подарок" and creative_mode == False:
-        int_hp += 20
+
+    if text == "Камень попал по самолету":
+        helper_hp(-20)
+
+    if text == "Камень вылетел за экран":
+        helper_hp(-20)
+
+    if text == "Самолет собрал подарок":
+        helper_hp(20)
+
+
+def helper_hp(add_hp):
+    global int_hp
+    if not creative_mode:
+        int_hp += add_hp
         _ustanovi_hp()
 
 

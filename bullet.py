@@ -7,10 +7,10 @@ def made_bullet(x_bullet, y_bullet):
     return {"coord": pygame.Rect(x_bullet, y_bullet, 6, 21)}
 
 
-def paint(bullet, display: pygame.Surface,stone=None):
+def paint(bullet, display: pygame.Surface,otladka):
     display.blit(transform_bullet, bullet["coord"])
-    # pygame.draw.rect(display, [255,255,255],[bullet["coord"][0],bullet["coord"][1],6,21],1) ###РЕКТ ПУЛИ###
-
+    if otladka:
+        pygame.draw.rect(display, [255,255,255],[bullet["coord"][0],bullet["coord"][1],6,21],1)
 
 def del_stone(bullet, stone_list):
     for collide_stone in stone_list:

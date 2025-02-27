@@ -5,10 +5,11 @@ def made_gift():
     gift_slovar = {"coord": pygame.Rect(x_gift, -70, 42, 42), "speed_y": 3}
     return gift_slovar
 
-def paint(gift,display:pygame.Surface):
+def paint(gift,display:pygame.Surface, otladka):
     display.blit(transform_parashut,[gift["coord"].x-25,gift["coord"].y-75])
     display.blit(transform_gift,gift["coord"])
-    # pygame.draw.rect(display,[255,255,255],gift["coord"],2)
+    if otladka:
+        pygame.draw.rect(display,[255,255,255],gift["coord"],2)
 
 def collect_gift(gift):
     sbor_podarka = gift["coord"].collidelist(samolet.samolet_slovar["hit_rect"])
