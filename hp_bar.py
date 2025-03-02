@@ -68,12 +68,8 @@ rect_red_hp_bar = pygame.Rect(86, 15, 0, 46)
 creative_mode = False
 int_hp = 100
 
-red_hp_bar = pygame.image.load("pics/red_hp.png")
-# gold_hp_bar = pygame.image.load("pics/gold_hp.png")
-hp_bar_surface = pygame.image.load("pics/hp_bar.png")
-transform_hp_bar_surface = pygame.transform.scale(hp_bar_surface,
-                                                  [hp_bar_surface.get_width() / 3, hp_bar_surface.get_height() / 3])
-import image_helpers
+red_hp_bar = image_helpers.helper_load_procent("pics/red_hp.png",99,99)
+transform_hp_bar_surface = image_helpers.helper_load_procent("pics/hp_bar.png",33,33)
 
 gold_hp_bar = image_helpers.to_gold_tone(red_hp_bar)
 

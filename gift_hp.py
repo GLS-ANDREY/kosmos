@@ -1,13 +1,16 @@
 import pygame,random,samolet,messenger
 
+import image_helpers
+
+
 def made_gift():
     x_gift = random.randint(50,1650)
     gift_slovar = {"coord": pygame.Rect(x_gift, -70, 42, 42), "speed_y": 3}
     return gift_slovar
 
 def paint(gift,display:pygame.Surface, otladka):
-    display.blit(transform_parashut,[gift["coord"].x-25,gift["coord"].y-75])
-    display.blit(transform_gift,gift["coord"])
+    display.blit(parashut_surface,[gift["coord"].x-25,gift["coord"].y-75])
+    display.blit(gift_surface,gift["coord"])
     if otladka:
         pygame.draw.rect(display,[255,255,255],gift["coord"],2)
 
@@ -25,7 +28,5 @@ def polet_gifta(gift):
         collect_gift(gift)
 
 
-gift = pygame.image.load("pics/Chest.png")
-parashut = pygame.image.load("pics/parashut.png")
-transform_gift = pygame.transform.scale(gift,[40,40])
-transform_parashut = pygame.transform.scale(parashut,[90,90])
+gift_surface = image_helpers.helper_load("pics/Chest.png",40,40)
+parashut_surface = image_helpers.helper_load("pics/parashut.png",90,90)
