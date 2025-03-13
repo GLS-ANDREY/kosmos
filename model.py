@@ -33,6 +33,7 @@ messenger.add_me_to_chat(stone_za_granicey)
 messenger.add_me_to_chat(sbor_gift)
 messenger.add_me_to_chat(stone_popal_v_samolet)
 
+animation_boom_tf = False
 
 all_gifts = []
 all_bullet = []
