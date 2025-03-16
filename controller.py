@@ -1,10 +1,4 @@
-import pygame, model, random, bullet, stone
-
-import gift_hp
-import hp_bar
-import samolet
-import sounds
-import points
+import pygame, model, random, bullet, stone, gift_hp,hp_bar,samolet,sounds,points,animation
 
 pygame.key.set_repeat(10)
 
@@ -18,7 +12,7 @@ pygame.key.set_repeat(10)
 # pygame.time.set_timer(dvizhenie_stone, 10)
 
 animation_boom = pygame.event.custom_type()
-pygame.time.set_timer(animation_boom, 1000)
+pygame.time.set_timer(animation_boom, 100)
 
 dvizhenie_puli_stone_gift = pygame.event.custom_type()
 pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
@@ -35,11 +29,11 @@ def allsobitiya():
 
     for a in s:
 
-        if a.type == animation_boom:
-            model.animation_boom_tf = True
-
         if a.type == pygame.QUIT:
             exit()
+
+        if a.type == animation_boom:
+            animation.animation()
 
         if a.type == spawn_gift:
             gift = gift_hp.made_gift()
