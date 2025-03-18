@@ -11,8 +11,8 @@ pygame.key.set_repeat(10)
 # dvizhenie_stone = pygame.event.custom_type()
 # pygame.time.set_timer(dvizhenie_stone, 10)
 
-animation_boom = pygame.event.custom_type()
-pygame.time.set_timer(animation_boom, 100)
+animation_timer = pygame.event.custom_type()
+pygame.time.set_timer(animation_timer, 70)
 
 dvizhenie_puli_stone_gift = pygame.event.custom_type()
 pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
@@ -32,8 +32,9 @@ def allsobitiya():
         if a.type == pygame.QUIT:
             exit()
 
-        if a.type == animation_boom:
-            animation.animation()
+        if a.type == animation_timer:
+            animation.animation(model.animation_one)
+            animation.animation(model.animation_one2)
 
         if a.type == spawn_gift:
             gift = gift_hp.made_gift()
