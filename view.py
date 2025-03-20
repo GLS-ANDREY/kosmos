@@ -7,8 +7,8 @@ import animation
 
 def paint():
     display.blit(fon, [0, 0])
-    animation.animation_pics(model.animation_one,display, "pics/blue_open")
-    animation.animation_pics(model.animation_one2,display, "pics/fire")
+    animation.animation_pics(model.animation_one,display)
+    animation.animation_pics(model.animation_one2,display)
 
 
     if sounds.sound_off_on == 0:

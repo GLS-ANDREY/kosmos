@@ -32,10 +32,10 @@ all_gifts = []
 all_bullet = []
 all_stone = []
 
-object_slovar_animation = animation.made_animation(100,500,4)
+object_slovar_animation = animation.made_animation(100,500,3,"pics/fire",200)
 animation_one = object_slovar_animation
 
-object_slovar_animation = animation.made_animation(500,500,16)
+object_slovar_animation = animation.made_animation(500,500,15, "pics/blue_open",30)
 animation_one2 = object_slovar_animation
 
 
