@@ -10,7 +10,6 @@ def stone_popal_po_samoletu(stone, samolet):
         messenger.send_message("Камень попал по самолету", stone)
 
 
-
 def made_stone(x_stone, y_stone):
     stone_slovar = {"coord": pygame.Rect(x_stone, y_stone, 50, 50), "speed_x": random.randint(-3, 3),
                     "speed_y": random.randint(2, 3),

@@ -12,7 +12,7 @@ pygame.key.set_repeat(10)
 # pygame.time.set_timer(dvizhenie_stone, 10)
 
 animation_timer = pygame.event.custom_type()
-pygame.time.set_timer(animation_timer, 70)
+pygame.time.set_timer(animation_timer, 100)
 
 dvizhenie_puli_stone_gift = pygame.event.custom_type()
 pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
@@ -28,13 +28,12 @@ def allsobitiya():
     s = pygame.event.get()
 
     for a in s:
-
         if a.type == pygame.QUIT:
             exit()
 
-        if a.type == animation_timer:
+        if a.type == animation_timer and type(model.animation_one) == dict:
             animation.animation(model.animation_one)
-            animation.animation(model.animation_one2)
+            # animation.animation(model.animation_one2)
 
         if a.type == spawn_gift:
             gift = gift_hp.made_gift()

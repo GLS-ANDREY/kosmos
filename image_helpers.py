@@ -56,7 +56,6 @@ def helper_load(file_name, size_x, size_y):
 
 
 def helper_load_procent(file_name, size_x_procent, size_y_procent):
-    print(file_name)
     kartinka = pygame.image.load(file_name)
     transform_kartinka = pygame.transform.scale(kartinka, [kartinka.get_width()*(size_x_procent/100), kartinka.get_height()*(size_y_procent/100)])
     return transform_kartinka
