@@ -8,8 +8,7 @@ import animation
 def paint():
     display.blit(fon, [0, 0])
 
-    if model.paint_or_not_paint == True:
-        animation.animation_pics(model.animation_one,display)
+
     # animation.animation_pics(model.animation_one2,display)
 
 
@@ -31,7 +30,8 @@ def paint():
 
     samolet.paint(display, model.otladka)
 
-    # display.blit(list_booms[model.boom_tf-1], [100, 100])
+    if model.paint_or_not_paint == True:
+        animation.animation_pics(model.animation_one,display)
 
     pygame.display.flip()
 

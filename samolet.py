@@ -7,9 +7,6 @@ def paint(display: pygame.Surface, otladka):
         for all_rect in samolet_slovar["hit_rect"]:
             pygame.draw.rect(display, [255, 100, 255], all_rect, 2)
 
-def animation(display: pygame.Surface):
-    pass
-
 
 def dvizhenie_vpravo():
     _dvizhenie(0,25)
@@ -25,6 +22,7 @@ def dvizhenie_vniz():
 
 def dvizhenie_vverx():
     _dvizhenie(1,-25)
+
 
 def _dvizhenie(coordinata, chislo):
     sscc_do = samolet_slovar["coord"][coordinata]
@@ -55,10 +53,17 @@ def _granica_ekrana():
     if samolet_slovar["coord"][1] <= 0:
         samolet_slovar["coord"][1] = 0
 
-# small_boom = pygame.image.load("pics/small_boom.png")
-# middle_boom = pygame.image.load("pics/middle_boom.png")
-# big_boom = pygame.image.load("pics/big_boom.png")
 samolet = pygame.image.load("pics/samolet.png")
 transform_samolet = pygame.transform.scale(samolet, [149, 147])
 samolet_slovar = {"coord": pygame.Rect([775, 843, 149, 147]),
-                  "hit_rect": [pygame.Rect(820, 843, 60, 147), pygame.Rect(775, 925, 149, 65)]}
+                  "hit_rect": [pygame.Rect([835,845,30,32]),#нос
+                               pygame.Rect(850, 877, 25, 55),#правое верхнее
+                               pygame.Rect(825, 877, 25, 55),#левое верхнее
+
+                               pygame.Rect(900, 950, 25, 25),#самое правое нижнее
+                               pygame.Rect(880, 920, 20, 60),#чутка левее от самого правого нижнего (турбина)
+                               pygame.Rect(850, 930, 30, 63),#делит центр с соседней снизу (чутка левее от предыдущего)
+
+                               pygame.Rect(775, 950, 25, 25),#самое левое нижнее
+                               pygame.Rect(800, 920, 20, 60),#чутка правее от самого левого нижнего (турбина)
+                               pygame.Rect(820, 930, 30, 63)]}

@@ -21,12 +21,11 @@ def stone_popal_v_samolet(text=None, otpravitel=None, dop_infa=None):
     global paint_or_not_paint, animation_one
     if text == "Камень попал по самолету":
         all_stone.remove(otpravitel)
-        otpravitel_coord = [otpravitel["coord"].x,otpravitel["coord"].y]
-        object_slovar_animation = animation.made_animation(otpravitel_coord[0], otpravitel_coord[1], "pics/fire", 200)
+        object_slovar_animation = animation.made_animation(dop_infa.x, dop_infa.y, "pics/fire", 200)
         animation_one = object_slovar_animation
         paint_or_not_paint = True
 
-#TODO: Сделать у самолета много маленьких прямоугольников, если камень врезается в какой то из прямоугольников то рисовать огонь имеено на нем, не смотря на камень
+#TODO: в стоун(модуль) доделать что бы было пересечение центра камня и ректа самолета с помощью фора и колайд поинта
 messenger.add_me_to_chat(sbivanie_stone)
 messenger.add_me_to_chat(bullet_za_granicey)
 messenger.add_me_to_chat(stone_za_granicey)
@@ -43,6 +42,5 @@ animation_one = None
 
 # object_slovar_animation = animation.made_animation(500,500, "pics/blue_open",30)
 # animation_one2 = object_slovar_animation
-
 
 otladka = False

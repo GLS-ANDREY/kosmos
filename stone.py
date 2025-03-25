@@ -6,8 +6,11 @@ def stone_viletel_za_ekran(stone):
         messenger.send_message("Камень вылетел за экран", stone)
 
 def stone_popal_po_samoletu(stone, samolet):
-    if stone["coord"].collidelist(samolet["hit_rect"]) != -1:
-        messenger.send_message("Камень попал по самолету", stone)
+    collide = stone["coord"].collidepoint(samolet["hit_rect"])
+    for stone_collide in collide:
+        if stone_collide != -1:
+            rect_po_stone = samolet["hit_rect"][stone_collide]
+            messenger.send_message("Камень попал по самолету", stone, rect_po_stone)
 
 
 def made_stone(x_stone, y_stone):

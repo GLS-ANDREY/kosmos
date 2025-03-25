@@ -17,7 +17,6 @@ def animation_pics(animation, display):#view
     display.blit(animation["pics"][animation["image_number"]],animation["coord"])
 
 
-#TODO: Сделать чтобы не загружалось много картинок (см. консоль)
 def animation(animation):#model
     animation["image_number"] += 1
     stop_pics = len(animation["pics"])
