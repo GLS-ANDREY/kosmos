@@ -78,6 +78,8 @@ def allsobitiya():
             model.all_bullet.append(bs)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
+            stone.stone_popal_po_samoletu(stone, samolet)
+#TODO: Сделать чтобы проверка пересечения камня и самолета происходила при движении и камня и самолета, сделать это в этом ифе и похожих на него, в строке выше сейчас указаны модули, нужно что бы были словари
             samolet.dvizhenie_vpravo()
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_a:

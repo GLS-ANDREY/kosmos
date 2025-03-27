@@ -1,16 +1,22 @@
-import random, pygame, time, messenger
+import random, pygame, time, messenger, math
 
 
 def stone_viletel_za_ekran(stone):
     if stone["coord"].y > 1010 or stone["coord"].x > 1710 or stone["coord"].x < -50:
         messenger.send_message("Камень вылетел за экран", stone)
 
+
 def stone_popal_po_samoletu(stone, samolet):
-    collide = stone["coord"].collidepoint(samolet["hit_rect"])
-    for stone_collide in collide:
-        if stone_collide != -1:
-            rect_po_stone = samolet["hit_rect"][stone_collide]
-            messenger.send_message("Камень попал по самолету", stone, rect_po_stone)
+    collide_list = stone["coord"].collidelist(samolet["hit_rect"])
+    if collide_list != -1:
+
+        rect_list = samolet["hit_rect"][collide_list]
+        rect_point = [rect_list.topleft, rect_list.midtop, rect_list.topright, rect_list.midright,
+                      rect_list.bottomright, rect_list.midbottom, rect_list.bottomleft, rect_list.midleft, rect_list.center]
+        for mt in rect_point:
+            if math.dist(mt, stone["coord"].center) <= 5:
+                rect_po_stone = samolet["hit_rect"][collide_list]
+                messenger.send_message("Камень попал по самолету", stone, rect_po_stone)
 
 
 def made_stone(x_stone, y_stone):
@@ -18,7 +24,7 @@ def made_stone(x_stone, y_stone):
                     "speed_y": random.randint(2, 3),
                     "angle": random.randint(0, 360), "coord_draw": [x_stone, y_stone]}
 
-    stone_slovar["coord_float"] = [x_stone,y_stone]
+    stone_slovar["coord_float"] = [x_stone, y_stone]
 
     stone_slovar["spin"] = pygame.transform.rotate(transform_stone, stone_slovar["angle"])
     size_stone = stone_slovar["spin"].get_size()
@@ -34,7 +40,7 @@ def polet_stone(stone, samolet):
     size_stone_static = transform_stone.get_size()
     stone["coord_float"][0] += stone["speed_x"] / 3.5
     stone["coord_float"][1] += stone["speed_y"] / 2.5
-    stone_popal_po_samoletu(stone,samolet)
+    stone_popal_po_samoletu(stone, samolet)
     stone_viletel_za_ekran(stone)
     stone["coord"].x = stone["coord_float"][0]
     stone["coord"].y = stone["coord_float"][1]
@@ -52,7 +58,7 @@ def polet_stone(stone, samolet):
     stone["coord_draw"][1] = stone["coord"].y - center_spin_stone[1]
 
 
-def paint(stone, display: pygame.Surface,otladka):
+def paint(stone, display: pygame.Surface, otladka):
     display.blit(stone["spin"], stone["coord_draw"])
 
     size_stone = stone["spin"].get_size()

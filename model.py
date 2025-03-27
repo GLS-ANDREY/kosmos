@@ -25,7 +25,7 @@ def stone_popal_v_samolet(text=None, otpravitel=None, dop_infa=None):
         animation_one = object_slovar_animation
         paint_or_not_paint = True
 
-#TODO: в стоун(модуль) доделать что бы было пересечение центра камня и ректа самолета с помощью фора и колайд поинта
+
 messenger.add_me_to_chat(sbivanie_stone)
 messenger.add_me_to_chat(bullet_za_granicey)
 messenger.add_me_to_chat(stone_za_granicey)
