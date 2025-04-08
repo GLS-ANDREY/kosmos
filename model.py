@@ -40,7 +40,4 @@ all_stone = []
 
 animation_one = None
 
-# object_slovar_animation = animation.made_animation(500,500, "pics/blue_open",30)
-# animation_one2 = object_slovar_animation
-
 otladka = False
