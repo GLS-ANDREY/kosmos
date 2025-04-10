@@ -41,6 +41,7 @@ def allsobitiya():
 
         if a.type == pygame.KEYUP and a.key == pygame.K_TAB:
             model.otladka = not model.otladka
+            stone_slovar = stone.made_stone(random.randint(600, 900), -50)
 
         if a.type == dvizhenie_puli_stone_gift:
             for infa_gift in model.all_gifts:

@@ -8,29 +8,18 @@ def stone_viletel_za_ekran(stone):
 
 def stone_popal_po_samoletu(stone, samolet):
     if type(stone) == list:
-        for stone_for_fora in stone:
-            collide_list = stone_for_fora["coord"].collidelist(samolet["hit_rect"])
-            if collide_list != -1:
-                rect_list = samolet["hit_rect"][collide_list]
-                rect_point = [rect_list.topleft, rect_list.midtop, rect_list.topright, rect_list.midright,
-                              rect_list.bottomright, rect_list.midbottom, rect_list.bottomleft, rect_list.midleft,
-                              rect_list.center]
-                for mt in rect_point:
-                    if math.dist(mt, stone_for_fora["coord"].center) <= 100:
-                        rect_po_stone = samolet["hit_rect"][collide_list]
-                        messenger.send_message("Камень попал по самолету", stone_for_fora, rect_po_stone)
-
-    if type(stone) == dict:
-        collide_list = stone["coord"].collidelist(samolet["hit_rect"])
+        collide_list = vizivatel["coord"].collidelist(samolet["hit_rect"])
         if collide_list != -1:
             rect_list = samolet["hit_rect"][collide_list]
             rect_point = [rect_list.topleft, rect_list.midtop, rect_list.topright, rect_list.midright,
                           rect_list.bottomright, rect_list.midbottom, rect_list.bottomleft, rect_list.midleft,
                           rect_list.center]
             for mt in rect_point:
-                if math.dist(mt, stone["coord"].center) <= 10:
+                if math.dist(mt, vizivatel["coord"].center) <= 100:
                     rect_po_stone = samolet["hit_rect"][collide_list]
-                    messenger.send_message("Камень попал по самолету", stone, rect_po_stone)
+                    messenger.send_message("Камень попал по самолету", vizivatel, rect_po_stone)
+                    #TODO:Сделать все как по образцу из л.пу
+stone_popal_po_samoletu()
 
 def made_stone(x_stone, y_stone):
     stone_slovar = {"coord": pygame.Rect(x_stone, y_stone, 50, 50), "speed_x": random.randint(-3, 3),
