@@ -2,14 +2,6 @@ import pygame, model, random, bullet, stone, gift_hp,hp_bar,samolet,sounds,point
 
 pygame.key.set_repeat(10)
 
-# dvizhenie_puli = pygame.event.custom_type()
-# pygame.time.set_timer(dvizhenie_puli, 10)
-#
-# dvizhenie_gift = pygame.event.custom_type()
-# pygame.time.set_timer(dvizhenie_gift, 10)
-#
-# dvizhenie_stone = pygame.event.custom_type()
-# pygame.time.set_timer(dvizhenie_stone, 10)
 
 animation_timer = pygame.event.custom_type()
 pygame.time.set_timer(animation_timer, 100)
@@ -26,14 +18,14 @@ pygame.time.set_timer(spawn_gift, 10000)
 
 def allsobitiya():
     s = pygame.event.get()
-
+    if model.animation_one != None:
+        animation.controller(model.animation_one,s)
     for a in s:
         if a.type == pygame.QUIT:
             exit()
 
         if a.type == animation_timer and type(model.animation_one) == dict:
             animation.animation(model.animation_one)
-            # animation.animation(model.animation_one2)
 
         if a.type == spawn_gift:
             gift = gift_hp.made_gift()
@@ -80,15 +72,21 @@ def allsobitiya():
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
             samolet.dvizhenie_vpravo()
-            stone.stone_popal_po_samoletu(model.all_stone, samolet.samolet_slovar)
-        # TODO: Сделать чтобы проверка пересечения камня и самолета происходила при движении и камня, и самолета, сделать это в этом ифе и похожих на него, в строке выше сейчас указаны модули, нужно что бы были словари
+            for one_stone in model.all_stone:
+                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_a:
             samolet.dvizhenie_vlevo()
+            for one_stone in model.all_stone:
+                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_s:
             samolet.dvizhenie_vniz()
+            for one_stone in model.all_stone:
+                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_w:
             samolet.dvizhenie_vverx()
+            for one_stone in model.all_stone:
+                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
 

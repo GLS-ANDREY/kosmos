@@ -21,7 +21,7 @@ def stone_popal_v_samolet(text=None, otpravitel=None, dop_infa=None):
     global paint_or_not_paint, animation_one
     if text == "Камень попал по самолету":
         all_stone.remove(otpravitel)
-        object_slovar_animation = animation.made_animation(dop_infa.x, dop_infa.y, "pics/fire", 200)
+        object_slovar_animation = animation.made_animation(dop_infa[0], dop_infa[1], "pics/fire", 200,2000)
         animation_one = object_slovar_animation
         paint_or_not_paint = True
 

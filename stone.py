@@ -7,19 +7,16 @@ def stone_viletel_za_ekran(stone):
 
 
 def stone_popal_po_samoletu(stone, samolet):
-    if type(stone) == list:
-        collide_list = vizivatel["coord"].collidelist(samolet["hit_rect"])
-        if collide_list != -1:
-            rect_list = samolet["hit_rect"][collide_list]
-            rect_point = [rect_list.topleft, rect_list.midtop, rect_list.topright, rect_list.midright,
-                          rect_list.bottomright, rect_list.midbottom, rect_list.bottomleft, rect_list.midleft,
-                          rect_list.center]
-            for mt in rect_point:
-                if math.dist(mt, vizivatel["coord"].center) <= 100:
-                    rect_po_stone = samolet["hit_rect"][collide_list]
-                    messenger.send_message("Камень попал по самолету", vizivatel, rect_po_stone)
-                    #TODO:Сделать все как по образцу из л.пу
-stone_popal_po_samoletu()
+    rect_point_list = []
+    for all_hit_rect in samolet["hit_rect"]:
+        rect_point = [all_hit_rect.topleft, all_hit_rect.midtop, all_hit_rect.topright, all_hit_rect.midright,
+                      all_hit_rect.bottomright, all_hit_rect.midbottom, all_hit_rect.bottomleft, all_hit_rect.midleft,
+                      all_hit_rect.center]
+        rect_point_list += rect_point
+    for mt in rect_point_list:
+        if math.dist(mt, stone["coord"].center) <= 10:
+            messenger.send_message("Камень попал по самолету", stone, mt)
+            break
 
 def made_stone(x_stone, y_stone):
     stone_slovar = {"coord": pygame.Rect(x_stone, y_stone, 50, 50), "speed_x": random.randint(-3, 3),
@@ -42,6 +39,7 @@ def polet_stone(stone, samolet):
     size_stone_static = transform_stone.get_size()
     stone["coord_float"][0] += stone["speed_x"] / 3.5
     stone["coord_float"][1] += stone["speed_y"] / 2.5
+    # stone_popal_po_samoletu(stone, samolet)
     stone_popal_po_samoletu(stone, samolet)
     stone_viletel_za_ekran(stone)
     stone["coord"].x = stone["coord_float"][0]
