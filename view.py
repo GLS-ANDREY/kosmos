@@ -9,9 +9,6 @@ def paint():
     display.blit(fon, [0, 0])
 
 
-    # animation.animation_pics(model.animation_one2,display)
-
-
     if sounds.sound_off_on == 0:
         display.blit(off_sound, [1630, 60])
 

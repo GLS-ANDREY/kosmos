@@ -3,9 +3,6 @@ import pygame, model, random, bullet, stone, gift_hp,hp_bar,samolet,sounds,point
 pygame.key.set_repeat(10)
 
 
-animation_timer = pygame.event.custom_type()
-pygame.time.set_timer(animation_timer, 100)
-
 dvizhenie_puli_stone_gift = pygame.event.custom_type()
 pygame.time.set_timer(dvizhenie_puli_stone_gift, 10)
 
@@ -23,9 +20,6 @@ def allsobitiya():
     for a in s:
         if a.type == pygame.QUIT:
             exit()
-
-        if a.type == animation_timer and type(model.animation_one) == dict:
-            animation.animation(model.animation_one)
 
         if a.type == spawn_gift:
             gift = gift_hp.made_gift()
@@ -71,22 +65,18 @@ def allsobitiya():
             model.all_bullet.append(bs)
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_d:
-            samolet.dvizhenie_vpravo()
-            for one_stone in model.all_stone:
-                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
+            samolet.dvizhenie_vpravo(model.all_stone)
+
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_a:
-            samolet.dvizhenie_vlevo()
-            for one_stone in model.all_stone:
-                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
+            samolet.dvizhenie_vlevo(model.all_stone)
+
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_s:
-            samolet.dvizhenie_vniz()
-            for one_stone in model.all_stone:
-                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
+            samolet.dvizhenie_vniz(model.all_stone)
+
 
         if a.type == pygame.KEYDOWN and a.key == pygame.K_w:
-            samolet.dvizhenie_vverx()
-            for one_stone in model.all_stone:
-                stone.stone_popal_po_samoletu(one_stone, samolet.samolet_slovar)
+            samolet.dvizhenie_vverx(model.all_stone)
+
 

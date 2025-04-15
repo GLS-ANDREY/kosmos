@@ -39,7 +39,6 @@ def polet_stone(stone, samolet):
     size_stone_static = transform_stone.get_size()
     stone["coord_float"][0] += stone["speed_x"] / 3.5
     stone["coord_float"][1] += stone["speed_y"] / 2.5
-    # stone_popal_po_samoletu(stone, samolet)
     stone_popal_po_samoletu(stone, samolet)
     stone_viletel_za_ekran(stone)
     stone["coord"].x = stone["coord_float"][0]

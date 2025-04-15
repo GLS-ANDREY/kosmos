@@ -1,30 +1,33 @@
-import pygame, random, bullet, messenger, points, model
+import pygame, random, bullet, messenger, points,stone,animation
 
 def paint(display: pygame.Surface, otladka):
     display.blit(transform_samolet, samolet_slovar["coord"])
+    animation.animation_pics(samolet_slovar["fire"],display)
 
     if otladka:
         for all_rect in samolet_slovar["hit_rect"]:
             pygame.draw.rect(display, [255, 100, 255], all_rect, 2)
 
 
-def dvizhenie_vpravo():
-    _dvizhenie(0,25)
+def dvizhenie_vpravo(all_stone):
+    _dvizhenie(0,25,all_stone)
 
 
-def dvizhenie_vlevo():
-    _dvizhenie(0,-25)
+def dvizhenie_vlevo(all_stone):
+    _dvizhenie(0,-25,all_stone)
 
 
-def dvizhenie_vniz():
-    _dvizhenie(1,25)
+def dvizhenie_vniz(all_stone):
+    _dvizhenie(1,25,all_stone)
 
 
-def dvizhenie_vverx():
-    _dvizhenie(1,-25)
+def dvizhenie_vverx(all_stone):
+    _dvizhenie(1,-25,all_stone)
 
 
-def _dvizhenie(coordinata, chislo):
+def _dvizhenie(coordinata, chislo,all_stone):
+    for one_stone in all_stone:
+        stone.stone_popal_po_samoletu(one_stone, samolet_slovar)
     sscc_do = samolet_slovar["coord"][coordinata]
     samolet_slovar["coord"][coordinata] += chislo
     _granica_ekrana()
@@ -32,6 +35,7 @@ def _dvizhenie(coordinata, chislo):
     sscc_pd = sscc_posle-sscc_do
     for all_rect in samolet_slovar["hit_rect"]:
         all_rect[coordinata] += sscc_pd
+
 
 
 def strelba(button_r_or_l=None):
@@ -62,8 +66,9 @@ samolet_slovar = {"coord": pygame.Rect([775, 843, 149, 147]),
 
                                pygame.Rect(900, 950, 25, 25),#самое правое нижнее
                                pygame.Rect(880, 920, 20, 60),#чутка левее от самого правого нижнего (турбина)
-                               pygame.Rect(850, 930, 30, 63),#делит центр с соседней снизу (чутка левее от предыдущего)
+                               pygame.Rect(850, 930, 30, 63),#делит центр (чутка левее от предыдущего)
 
                                pygame.Rect(775, 950, 25, 25),#самое левое нижнее
                                pygame.Rect(800, 920, 20, 60),#чутка правее от самого левого нижнего (турбина)
-                               pygame.Rect(820, 930, 30, 63)]}
+                               pygame.Rect(820, 930, 30, 63)]}#делит центр (чутка правее от предыдущего)
+samolet_slovar["fire"] = animation.made_animation(500,500,"pics/fire",200,2000)
