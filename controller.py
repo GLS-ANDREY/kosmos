@@ -17,6 +17,8 @@ def allsobitiya():
     s = pygame.event.get()
     if model.animation_one != None:
         animation.controller(model.animation_one,s)
+    samolet.controller(s)
+
     for a in s:
         if a.type == pygame.QUIT:
             exit()

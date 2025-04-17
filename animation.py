@@ -20,10 +20,11 @@ def made_animation(coord_x, coord_y, folder_path, size, life_time):
 
 def controller(animation, events):
     for a in events:
-        if a.type == animation["fire_potux_timer"]:
-            animation["active"] = False
         if a.type == animation["fire_smena_timer"]:
             _animation(animation)
+        if a.type == animation["fire_potux_timer"]:
+            animation["active"] = False
+
 
 #TODO: Нужно сделать огонь на самолете, нужно сделать много огней на всю программу, сделать самолет помедленнее, сделать что бы он двигался более короткими шагами, но чаще
 

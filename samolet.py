@@ -36,7 +36,10 @@ def _dvizhenie(coordinata, chislo,all_stone):
     for all_rect in samolet_slovar["hit_rect"]:
         all_rect[coordinata] += sscc_pd
 
-
+def controller(events):
+    animation.controller(samolet_slovar["fire"],events)
+    samolet_slovar["fire"]["coord"] = [samolet_slovar["coord"][0],samolet_slovar["coord"][1]]
+#TODO: Сделали что бы появлялся огонь на самолете, посмотреть почему он не слушается времени которое выстовляем на последней строке этого модуля
 
 def strelba(button_r_or_l=None):
     coord_bullet_x = 30 if button_r_or_l == "left" else 115
